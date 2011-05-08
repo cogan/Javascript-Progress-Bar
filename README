@@ -1,0 +1,26 @@
+Indeterminate Progress Bars:
+  This project contains 2 progress bars, a traditional progress bar and a "double"
+  progress bar (a bar with two bars).
+
+Both bars have a very simple public API.  See progress-bar-test.html for 
+example usage.
+
+ProgressBar
+ *  setTo(ticks)
+ *  fillTo(ticks, fillSpeed, onTick, onFillComplete)
+ *  isFull()
+ *  stop()
+
+DoubleProgressBar
+ *  setFrontBarTo(ticks)
+ *  setBackBarTo(ticks)
+ *  fillFrontBarTo(ticks, fillSpeed, onTick, onFillComplete)
+ *  fillBackBarTo(ticks, fillSpeed, onTick, onFillComplete)
+ *  isFrontBarFull()
+ *  isBackBarFull()
+ *  stopFrontBar()
+ *  stopBackBar()
+ *  stop()
+
+Dependencies:
+  jquery

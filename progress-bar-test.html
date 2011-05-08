@@ -1,0 +1,105 @@
+<html>
+<head>
+ <script type='text/javascript' src='jquery.js'></script> 
+ <script type='text/javascript' src='progress-bar.js'></script>
+ <script type='text/javascript' src='double-progress-bar.js'></script>
+ <script type='text/javascript'>
+   var progressBar;
+   var doubleProgressBar;
+   
+   $(document).ready(function(){
+     // create progress bars
+     progressBar = new ProgressBar('progressbar-container', 'progressbar-bar');
+     doubleProgressBar = new DoubleProgressBar('doublebar-container', 'doublebar-back', 'doublebar-front');
+     
+     // initialize progress bars
+     progressBar.setTo(30);
+     doubleProgressBar.setFrontBarTo(20);
+     doubleProgressBar.setBackBarTo(40);
+   });
+ </script>
+ 
+ <style type='text/css'>
+  #progressbar-container{
+    background-color: yellow;
+    height: 20px;
+    width: 500px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+  }
+ 
+  #progressbar-bar{
+    background-color: green;
+    height: 100%;
+    width: 0px;
+  }
+
+  #doublebar-container{
+    background-color: yellow;
+    height: 20px;
+    width: 500px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+  }
+ 
+  #doublebar-back{
+    background-color: purple;
+    height: 100%;
+    width: 0px;
+  }
+  
+  #doublebar-front{
+    background-color: green;
+    height: 100%;
+    width: 0px;
+  }
+
+  #content {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    font-family: "Garamond";
+  }
+ 
+ </style>
+</head>
+
+<body>
+ <div id='content'>
+  <h1>Progress Bar</h1>
+  
+  <div id='progressbar-container'>
+   <div id='progressbar-bar'></div>
+  </div>
+  
+  <button type="button" onclick='progressBar.fillTo(100, 10)'>fill animate</button>
+  <button type="button" onclick='progressBar.fillTo(0, 5)'>empty animate</button>
+  <button type="button" onclick='progressBar.stop()'>stop</button>
+  <button type="button" onclick='progressBar.setTo(100)'>fill</button>
+  <button type="button" onclick='progressBar.setTo(0)'>empty</button>
+
+  <br /><br />
+  
+  <h1>"Double" Progress Bar</h1>
+
+  <div id='doublebar-container'>
+   <div id='doublebar-back'><div id='doublebar-front'></div></div>
+  </div>
+
+  <button type="button" onclick='doubleProgressBar.fillFrontBarTo(100, 10)'>fill front bar animate</button>
+  <button type="button" onclick='doubleProgressBar.fillFrontBarTo(0, 5)'>empty front bar animate</button>
+  <button type="button" onclick='doubleProgressBar.stopFrontBar()'>stop front bar</button>
+  <button type="button" onclick='doubleProgressBar.setFrontBarTo(100)'>fill front bar</button>
+  <button type="button" onclick='doubleProgressBar.setFrontBarTo(0)'>empty front bar</button>
+  <br />
+  <button type="button" onclick='doubleProgressBar.fillBackBarTo(100, 10)'>fill back bar animate</button>
+  <button type="button" onclick='doubleProgressBar.fillBackBarTo(0, 5)'>empty back bar animate</button>
+  <button type="button" onclick='doubleProgressBar.stopBackBar()'>stop back bar</button>
+  <button type="button" onclick='doubleProgressBar.setBackBarTo(100)'>fill back bar</button>
+  <button type="button" onclick='doubleProgressBar.setBackBarTo(0)'>empty back bar</button>
+
+ </div>
+</body>
+</html>
