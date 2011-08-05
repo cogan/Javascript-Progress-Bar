@@ -19,7 +19,7 @@ function ProgressBar(container, bar){
   this.maxTicks = 100;
   
   this.bar = function() {};
-  this.bar.name = bar;
+  this.bar.bar_name = bar;
   this.bar.currentTicks = 0;
   this.bar.lock = 0;
 
@@ -29,7 +29,7 @@ function ProgressBar(container, bar){
   this.setTo = function(ticks){
     ++this.bar.lock;
     ticks = this.checkBounds(ticks);
-    $('#'+this.bar.name).css('width', this.ticksToPxStr(ticks));
+    $('#'+this.bar.bar_name).css('width', this.ticksToPxStr(ticks));
     this.bar.currentTicks = ticks;
   }
 
@@ -51,7 +51,7 @@ function ProgressBar(container, bar){
     if (lock == obj.bar.lock)
     {
       ticks = obj.checkBounds(ticks);
-      var currentWidthPx = parseInt($('#'+obj.bar.name).css('width'), 10);
+      var currentWidthPx = parseInt($('#'+obj.bar.bar_name).css('width'), 10);
       var targetWidthPx = obj.ticksToPx(ticks);
       if (currentWidthPx < targetWidthPx){
         var updatedWidthPx = currentWidthPx + 1;
@@ -60,7 +60,7 @@ function ProgressBar(container, bar){
       }
 
       if (currentWidthPx != targetWidthPx){
-        $('#'+obj.bar.name).css('width', updatedWidthPx+'px');
+        $('#'+obj.bar.bar_name).css('width', updatedWidthPx+'px');
         obj.bar.currentTicks = obj.pxToTicks(updatedWidthPx);
 
         // call the onTick method
@@ -84,7 +84,7 @@ function ProgressBar(container, bar){
    */
   this.isFull = function(){
     var containerWidthPx = parseInt($('#'+this.container).css('width'), 10);
-    var barWidthPx = parseInt($('#'+this.bar.name).css('width'), 10);
+    var barWidthPx = parseInt($('#'+this.bar.bar_name).css('width'), 10);
     if (barWidthPx < containerWidthPx){
       return false;
     }else{

@@ -25,8 +25,8 @@ function DoubleProgressBar(container, back, front)
   
   this.frontBar = function() {};
   this.backBar = function() {};
-  this.frontBar.name = front;
-  this.backBar.name = back;
+  this.frontBar.bar_name = front;
+  this.backBar.bar_name = back;
   this.frontBar.currentTicks = 0;
   this.backBar.currentTicks = 0; 
   this.frontBar.lock = 0;
@@ -37,7 +37,7 @@ function DoubleProgressBar(container, back, front)
    */
   this.setBarTo = function(bar, ticks){
     ticks = this.checkBounds(ticks);
-    $('#'+bar.name).css('width', this.ticksToPxStr(ticks));
+    $('#'+bar.bar_name).css('width', this.ticksToPxStr(ticks));
     bar.currentTicks = ticks;
   }
   
@@ -77,7 +77,7 @@ function DoubleProgressBar(container, back, front)
     if (lock == bar.lock)
     {
       ticks = obj.checkBounds(ticks);
-      var currentWidthPx = parseInt($('#'+bar.name).css('width'), 10);
+      var currentWidthPx = parseInt($('#'+bar.bar_name).css('width'), 10);
       var targetWidthPx = obj.ticksToPx(ticks);
       if (currentWidthPx < targetWidthPx){
         var updatedWidthPx = currentWidthPx + 1;
@@ -86,7 +86,7 @@ function DoubleProgressBar(container, back, front)
       }
   
       if (currentWidthPx != targetWidthPx){
-        $('#'+bar.name).css('width', updatedWidthPx+'px');
+        $('#'+bar.bar_name).css('width', updatedWidthPx+'px');
         bar.currentTicks = obj.pxToTicks(updatedWidthPx);
   
         // call the onTick method
@@ -110,7 +110,7 @@ function DoubleProgressBar(container, back, front)
    */
   this.isBarFull = function(bar){
     var containerWidthPx = parseInt($('#'+this.container).css('width'), 10);
-    var barWidthPx = parseInt($('#'+bar.name).css('width'), 10);
+    var barWidthPx = parseInt($('#'+bar.bar_name).css('width'), 10);
     if (barWidthPx < containerWidthPx){
       return false;
     }else{
