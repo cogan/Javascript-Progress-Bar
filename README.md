@@ -4,7 +4,7 @@ A lightweight, animated progress bar library with support for single and double 
 
 **[Demo](https://cogan.github.io/Javascript-Progress-Bar/)**
 
-![Progress Bar Demo](screenshots/demo.png)
+![Progress Bar Demo](screenshots/demo.gif)
 
 ## Features
 
